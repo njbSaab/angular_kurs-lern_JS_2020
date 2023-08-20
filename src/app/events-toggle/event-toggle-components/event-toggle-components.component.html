@@ -1,0 +1,24 @@
+<div [style.text-align]="textAlignCenter">
+  <img
+    [src]="imgSrc"
+    [style.width.%]="widthImg"
+    (click)="toggleColor()"
+    alt="">
+</div>
+
+
+<h1
+  [style.text-align]="textAlignCenter"
+  [innerHTML]="content"
+  [style.color]="myColor"
+  (click)="toggleShownEl()"
+>
+</h1>
+
+<p [ngClass]="currentClass" (click)="toggleClass()" *ngIf="showParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atque autem corporis deserunt ducimus eius, laboriosam mollitia nihil omnis quaerat quibusdam rem reprehenderit ut veniam!</p>
+
+
+<input type="text" (input)="search($event)">
+<div>
+  {{text}}
+</div>
