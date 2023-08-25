@@ -1,0 +1,29 @@
+<h1 [style.text-align]="textAlignCentre"
+    [style.color]="color">{{title}}</h1>
+<div [style.text-align]="textAlignCentre">
+    <img
+      [src]="source" alt=""
+      [style.width.%]="widthImg">
+</div>
+
+<div class="flex-column">
+  <span
+        (click)="showText = true"
+        class="btn">
+    ✅
+  </span>
+  <ul *ngIf="showText">
+
+   <li *ngFor="let item of itemsArray; let i = index">
+     {{item}}
+   </li>
+
+  </ul>
+  <span class="btn"
+        *ngIf="showText"
+        (click)="deleteItem()"
+  >
+    ❌
+  </span>
+</div>
+

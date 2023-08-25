@@ -1,1 +1,17 @@
-<p>header works!</p>
+<mat-toolbar color="basic">
+  <button (click)="drawer.toggle()"
+          mat-icon-button color="basic" aria-label="Example icon button with a home icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{myTitle}}</span>
+  <span class="example-spacer"></span>
+
+  <button (click)="openDialogHeader.emit()" color="warn"
+    mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon matBadge="{{ 5 }}" matBadgeColor="warn" matBadgeOverlap="false" matBadgePosition="after">favorite</mat-icon>
+  </button>
+
+  <button color="accent" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>

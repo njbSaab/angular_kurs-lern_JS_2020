@@ -1,4 +1,54 @@
-<app-header></app-header>
-<h1>hello course {{title}}</h1>
-<app-interpolation-component></app-interpolation-component>
-<app-event-toggle-components></app-event-toggle-components>
+<app-header [drawer]="myDrawer"
+            [myTitle]="title"
+            (openDialogHeader)="openDialog()"
+  ></app-header>
+
+<app-side-menu (setSideNavControl)="setSideNav($event)">
+  <!--  ng-content-->
+
+  <!-- leftSide-->
+  <ul class="menu">
+    <li>menu 1</li>
+    <li>menu 2</li>
+    <li>menu 3</li>
+  </ul>
+
+  <!-- rightSide-->
+  <div>
+    <h1 (click)="onClick()">main content</h1>
+  </div>
+  <!-- ng-content!-->
+
+</app-side-menu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<app-input-output-lesson3 [title]="title"-->
+<!--                  [source]="image"-->
+<!--                  [textAlignCentre]="textCenter"-->
+<!--                  [widthImg]="width"-->
+<!--                  [color]="myColor"-->
+<!--                  (click)="changeColorTitle()"-->
+<!--                  [itemsArray]="items">-->
+<!--</app-input-output-lesson3>-->
+
+<!--<h1>hello course {{title}}</h1>-->
+<!--<app-interpolation-lesson-component></app-interpolation-lesson-component>-->
+<!--<app-event-toggle-components></app-event-toggle-components>-->
