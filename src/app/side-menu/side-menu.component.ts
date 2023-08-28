@@ -1,9 +1,12 @@
 import {
   Component,
+  ContentChild,
   EventEmitter,
   OnInit,
   Output,
+  TemplateRef,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
@@ -23,7 +26,16 @@ export class SideMenuComponent implements OnInit {
   showFiller = false;
   //menu
 
+  // ng-template content
+  @ViewChild('contentBlock', { static: true, read: ViewContainerRef })
+  public block!: ViewContainerRef;
+
+  @ContentChild('contentTemplate', { static: true })
+  public contentTmpl!: TemplateRef<any>;
+  // ng-template content
+
   ngOnInit(): void {
+    this.block.createEmbeddedView(this.contentTmpl);
     this.setSideNavControl.emit(this.sideMenu);
   }
 }

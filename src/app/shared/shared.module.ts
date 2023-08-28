@@ -8,6 +8,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -19,6 +25,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatDialogModule,
     MatBadgeModule,
     DragDropModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+    MatGridListModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   imports: [CommonModule],
 })

@@ -1,35 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { DialogComponent } from './dialog/dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+// import { DialogComponent } from './dialog/dialog.component';
+// import { MatDialog } from '@angular/material/dialog';
+import { IProduct, products$ } from './data';
+import { Unsubscribe } from './utils/unsubscribe';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+@Injectable()
+export class AppComponent extends Unsubscribe implements OnInit {
+  //json
+  public products!: IProduct[];
   //menu
   public myDrawer!: MatDrawer;
   public title = 'LearnMe - Angular';
-
-  //dialog
-  constructor(public dialog: MatDialog) {}
-
+  public InputValue = '';
   public setSideNav(drawer: MatDrawer): void {
     this.myDrawer = drawer;
   }
-
+  public searchText = '';
   //// menu
 
-  // dialog
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
+  //dialog
+  // constructor(public dialog: MatDialog) {}
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  // dialog
+  // openDialog() {
+  //   const dialogRef = this.dialog.open(DialogComponent);
+  //
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
   //// dialog
 
   //ng-content
@@ -37,6 +43,24 @@ export class AppComponent {
     console.log('click');
   }
   //ng-content
+
+  // search take input val
+  public search(text: string): void {
+    this.searchText = text;
+  }
+  // search products
+  // public productsFilter(products: IProduct[]): IProduct[] {
+  //   return products.filter((product) =>
+  //     `${product.title} ${product.price}`
+  //       .toLowerCase()
+  //       .includes(this.searchText.toLowerCase()),
+  //   );
+  // }
+  ngOnInit(): void {
+    products$.pipe(takeUntil(this.unSubscriber$)).subscribe((prod) => {
+      this.products = prod;
+    });
+  }
 }
 
 //for input-output-lesson3.component

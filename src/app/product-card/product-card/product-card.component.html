@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{productCard?.title}}</mat-card-title>
+    <mat-card-subtitle>{{productCard?.category}}</mat-card-subtitle>
+   <h1 color="accent">{{productCard?.price | currency}}</h1>
+  </mat-card-header>
+  <div class="img">
+    <img mat-card-image
+         [src]='productCard?.thumbnail'
+         alt="Photo of a Shiba Inu">
+  </div>
+  <mat-card-content>
+      <p>{{productCard?.description}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="warn" mat-button>Cancel</button>
+    <button color="accent" mat-button>Buy</button>
+  </mat-card-actions>
+</mat-card>
