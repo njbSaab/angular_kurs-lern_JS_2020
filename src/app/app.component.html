@@ -1,7 +1,11 @@
 <app-header [drawer]="myDrawer"
             [myTitle]="title"
-            (openDialogHeader)="openDialog()"
+
+
+
   ></app-header>
+<!--  (openDialogHeader)="openDialog()"-->
+
 
 <app-side-menu (setSideNavControl)="setSideNav($event)">
   <!--  ng-content-->
@@ -19,8 +23,41 @@
   </div>
   <!-- ng-content!-->
 
+  <!--  ng-template-->
+  <ng-template #contentTemplate>
+  <div class="card_product_wrapper flex-column flex-center">
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Search your products</mat-label>
+      <input matInput type="text" [(ngModel)]="InputValue"
+      #searchValue (input)="search(searchValue.value)">
+      <button *ngIf="!InputValue" matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+      <button *ngIf="InputValue" matSuffix mat-icon-button aria-label="Clear" (click)="InputValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+    <div class="flex" *ngIf="products; else loader">
+      <div *ngFor="let product of products | productsFilter: searchText; let i = index">
+        <app-product-card [productCard]="product"></app-product-card>
+      </div>
+    </div>
+
+  </div>
+  </ng-template>
+  <!--  ng-template-->
+
 </app-side-menu>
 
+<ng-template #loader>
+  <div class="loading">
+  <mat-spinner></mat-spinner>
+  ...loading
+  </div>
+</ng-template>
 
 
 
