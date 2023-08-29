@@ -5,6 +5,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { IProduct, products$ } from './data';
 import { Unsubscribe } from './utils/unsubscribe';
 import { takeUntil } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent extends Unsubscribe implements OnInit {
   public myDrawer!: MatDrawer;
   public title = 'LearnMe - Angular';
   public InputValue = '';
+  public onlyFavorites = false;
   public setSideNav(drawer: MatDrawer): void {
     this.myDrawer = drawer;
   }
@@ -56,6 +58,12 @@ export class AppComponent extends Unsubscribe implements OnInit {
   //       .includes(this.searchText.toLowerCase()),
   //   );
   // }
+
+  // favorite
+  public toggleOnlyFavorites(event: MatCheckboxChange) {
+    this.onlyFavorites = event.checked;
+  }
+
   ngOnInit(): void {
     products$.pipe(takeUntil(this.unSubscriber$)).subscribe((prod) => {
       this.products = prod;

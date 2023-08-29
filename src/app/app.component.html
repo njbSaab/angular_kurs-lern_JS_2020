@@ -27,9 +27,11 @@
   <ng-template #contentTemplate>
   <div class="card_product_wrapper flex-column flex-center">
 
-    <mat-form-field class="example-form-field">
-      <mat-label>Search your products</mat-label>
-      <input matInput type="text" [(ngModel)]="InputValue"
+    <mat-checkbox color="accent" class="example-margin" (change)="toggleOnlyFavorites($event)">Show only favorites</mat-checkbox>
+
+    <mat-form-field color="accent" class="example-form-field">
+      <mat-label color="accent">Search your products</mat-label>
+      <input color="accent" matInput type="text" [(ngModel)]="InputValue"
       #searchValue (input)="search(searchValue.value)">
       <button *ngIf="!InputValue" matSuffix mat-icon-button>
         <mat-icon>search</mat-icon>
@@ -41,7 +43,7 @@
 
 
     <div class="flex" *ngIf="products; else loader">
-      <div *ngFor="let product of products | productsFilter: searchText; let i = index">
+      <div *ngFor="let product of products | productsFilter: searchText: onlyFavorites; let i = index">
         <app-product-card [productCard]="product"></app-product-card>
       </div>
     </div>

@@ -1,17 +1,22 @@
-<mat-toolbar color="basic">
-  <button (click)="drawer.toggle()" ngClass
-          mat-icon-button color="basic" aria-label="Example icon button with a home icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>{{myTitle}}</span>
-  <span class="example-spacer"></span>
+<mat-toolbar color="basic" fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button (click)="drawer.toggle()" ngClass
+            mat-icon-button color="basic" aria-label="Example icon button with a home icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{myTitle}}</span>
+    <app-exechange-rates></app-exechange-rates>
+  </div>
 
-  <button (click)="openDialogHeader.emit()" color="warn"
-    mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon matBadge="{{ 5 }}" matBadgeColor="warn" matBadgeOverlap="false" matBadgePosition="after">favorite</mat-icon>
-  </button>
+  <div>
+    <button (click)="openDialogHeader.emit()" color="warn"
+            mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon matBadge="{{ 5 }}" matBadgeColor="warn" matBadgeOverlap="false" matBadgePosition="after">favorite</mat-icon>
+    </button>
 
-  <button color="accent" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+    <button color="accent" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>money</mat-icon>
+    </button>
+  </div>
+
 </mat-toolbar>

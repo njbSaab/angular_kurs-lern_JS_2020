@@ -14,6 +14,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [],
@@ -31,6 +33,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    FlexLayoutModule,
   ],
   imports: [CommonModule],
 })

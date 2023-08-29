@@ -12,6 +12,7 @@ export interface IProduct {
   category: string;
   thumbnail: string;
   images: string[];
+  isFavorite: boolean;
 }
 
 export const products = [
@@ -25,6 +26,7 @@ export const products = [
     stock: 94,
     brand: 'Apple',
     category: 'smartphones',
+    isFavorite: false,
     thumbnail:
       'https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UF1000,1000_QL80_.jpg',
     images: [
@@ -45,6 +47,7 @@ export const products = [
     stock: 34,
     brand: 'Apple',
     category: 'smartphones',
+    isFavorite: false,
     thumbnail: 'https://t2.tudocdn.net/679551?w=824&h=494',
     images: [
       'https://i.dummyjson.com/data/products/2/1.jpg',
@@ -63,6 +66,7 @@ export const products = [
     stock: 123,
     brand: 'OPPO',
     category: 'smartphones',
+    isFavorite: true,
     thumbnail:
       'https://m-cdn.phonearena.com/images/hub/216-wide-two_1200/iPhone-15-release-date-predictions-price-specs-and-must-know-features.jpg',
     images: [
@@ -84,6 +88,7 @@ export const products = [
     stock: 36,
     brand: 'Samsung',
     category: 'smartphones',
+    isFavorite: true,
     thumbnail:
       'https://newsnreleases.com/wp-content/uploads/2023/07/image-14044444.jpg',
     images: [

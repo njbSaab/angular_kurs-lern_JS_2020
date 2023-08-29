@@ -1,8 +1,11 @@
 <mat-card class="example-card">
   <mat-card-header>
+    <mat-icon color="warn"
+              *ngIf="productCard.isFavorite; else startBlack"
+              (click)="productCard.isFavorite = !productCard.isFavorite">star</mat-icon>
     <mat-card-title>{{productCard?.title}}</mat-card-title>
     <mat-card-subtitle>{{productCard?.category}}</mat-card-subtitle>
-   <h1 color="accent">{{productCard?.price | currency}}</h1>
+
   </mat-card-header>
   <div class="img">
     <img mat-card-image
@@ -13,7 +16,15 @@
       <p>{{productCard?.description}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button color="warn" mat-button>Cancel</button>
-    <button color="accent" mat-button>Buy</button>
+      <button color="accent" mat-button>Add to card</button>
+
+      <div color="accent">
+        <h1>{{productCard?.price | currency}}</h1>
+      </div>
   </mat-card-actions>
 </mat-card>
+
+<ng-template #startBlack>
+  <mat-icon (click)="productCard.isFavorite = true">star</mat-icon>
+</ng-template>
+
