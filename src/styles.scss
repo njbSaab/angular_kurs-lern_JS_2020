@@ -1,18 +1,44 @@
-@import '~@angular/material/theming';
-
-
-@include mat-core();
-$my-app-primary: mat-palette($mat-indigo);
-$my-app-accent: mat-palette($mat-green, A200, A100, A400);
-$my-app-warn: mat-palette($mat-red);
-
-
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .mat-drawer-content{
   background: white !important;
+  color: black;
+}
+.loading{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+img{
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: auto;
+}
+.img{
+  width: 300px;
+  height: 300px;
+}
+
+.mat-mdc-card-header{
+  justify-content: space-between;
+}
+mat-form-field{
+  width: 80%;
+}
+mat-checkbox{
+  background: #303030;
+  padding: 20px;
+  border-radius: 12px;
+}
+.mdc-card__actions {
+  align-items: baseline !important;
+  justify-content: space-between;
 }

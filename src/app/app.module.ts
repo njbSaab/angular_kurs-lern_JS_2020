@@ -13,6 +13,9 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ListLikesComponent } from './list-likes/list-likes.component';
 import { ProductCardModule } from './product-card/product-card.module';
 import { ProductsFilterPipe } from './products-filter.pipe';
+import { ExechangeRatesComponent } from './header/exechange-rates/exechange-rates.component';
+import { ExchangeRatesDirective } from './header/exechange-rates/exchange-rates.directive';
+import { HiddenDirective } from './header/exechange-rates/hidden.directive';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { ProductsFilterPipe } from './products-filter.pipe';
     DialogComponent,
     ListLikesComponent,
     ProductsFilterPipe,
+    ExechangeRatesComponent,
+    ExchangeRatesDirective,
+    HiddenDirective,
   ],
 
   imports: [
