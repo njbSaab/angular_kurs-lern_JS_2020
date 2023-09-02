@@ -1,22 +1,17 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-// import { DialogComponent } from './dialog/dialog.component';
-// import { MatDialog } from '@angular/material/dialog';
-import { IProduct, products$ } from './data';
+import { IProduct, MainProducts } from './data';
 import { Unsubscribe } from './utils/unsubscribe';
-import { takeUntil } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-@Injectable()
 export class AppComponent extends Unsubscribe implements OnInit {
-  //json
-  public products!: IProduct[];
-  //menu
   public myDrawer!: MatDrawer;
   public title = 'LearnMe - Angular';
   public InputValue = '';
@@ -24,26 +19,12 @@ export class AppComponent extends Unsubscribe implements OnInit {
   public setSideNav(drawer: MatDrawer): void {
     this.myDrawer = drawer;
   }
+  public products$!: Observable<MainProducts | null>;
   public searchText = '';
   //// menu
 
-  //dialog
-  // constructor(public dialog: MatDialog) {}
-
-  // dialog
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(DialogComponent);
-  //
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
-  //// dialog
-
   //ng-content
-  public onClick() {
-    console.log('click');
-  }
+  public onClick() {}
   //ng-content
 
   // search take input val
@@ -51,24 +32,34 @@ export class AppComponent extends Unsubscribe implements OnInit {
     this.searchText = text;
   }
   // search products
-  // public productsFilter(products: IProduct[]): IProduct[] {
-  //   return products.filter((product) =>
-  //     `${product.title} ${product.price}`
-  //       .toLowerCase()
-  //       .includes(this.searchText.toLowerCase()),
-  //   );
-  // }
+  public productsFilter(products: IProduct[]): IProduct[] {
+    return products.filter((product) =>
+      `${product.title} ${product.price}`
+        .toLowerCase()
+        .includes(this.searchText.toLowerCase()),
+    );
+  }
 
   // favorite
   public toggleOnlyFavorites(event: MatCheckboxChange) {
     this.onlyFavorites = event.checked;
   }
 
-  ngOnInit(): void {
-    products$.pipe(takeUntil(this.unSubscriber$)).subscribe((prod) => {
-      this.products = prod;
-    });
+  constructor(private productService: ProductsService) {
+    super();
   }
+
+  ngOnInit(): void {
+    this.products$ = this.productService.getProducts();
+    //  .subscribe((res) => {
+    // console.log(res.products);});
+  }
+
+  //utils pattern async subscribe
+  // products$.pipe(takeUntil(this.unSubscriber$)).subscribe((prod) => {
+  //   this.products = prod;
+  // });
+  // }
 }
 
 //for input-output-lesson3.component

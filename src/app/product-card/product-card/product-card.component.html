@@ -7,7 +7,7 @@
     <mat-card-subtitle>{{productCard?.category}}</mat-card-subtitle>
 
   </mat-card-header>
-  <div class="img">
+  <div class="img" (click)="openDialog()">
     <img mat-card-image
          [src]='productCard?.thumbnail'
          alt="Photo of a Shiba Inu">
@@ -16,7 +16,7 @@
       <p>{{productCard?.description}}</p>
   </mat-card-content>
   <mat-card-actions>
-      <button color="accent" mat-button>Add to card</button>
+      <button color="accent" mat-button (click)="productAdded()">Add to card</button>
 
       <div color="accent">
         <h1>{{productCard?.price | currency}}</h1>
