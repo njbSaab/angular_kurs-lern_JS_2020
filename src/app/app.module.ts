@@ -16,6 +16,10 @@ import { ProductsFilterPipe } from './products-filter.pipe';
 import { ExechangeRatesComponent } from './header/exechange-rates/exechange-rates.component';
 import { ExchangeRatesDirective } from './header/exechange-rates/exchange-rates.directive';
 import { HiddenDirective } from './header/exechange-rates/hidden.directive';
+import { ProductsService } from './products.service';
+import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -38,8 +42,16 @@ import { HiddenDirective } from './header/exechange-rates/hidden.directive';
     EventsToggleModule,
     SharedModule,
     ProductCardModule,
+    HttpClientModule,
+    ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    ProductsService,
+    {
+      provide: 'baseURL',
+      useValue: environment.baseURL,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

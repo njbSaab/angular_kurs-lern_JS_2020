@@ -42,9 +42,18 @@
     </mat-form-field>
 
 
-    <div class="flex" *ngIf="products; else loader">
-      <div *ngFor="let product of products | productsFilter: searchText: onlyFavorites; let i = index">
-        <app-product-card [productCard]="product"></app-product-card>
+
+<!--    <div class="flex" *ngIf="products$ | async as products; else loader">-->
+<!--      <div *ngFor="let product of products | productsFilter: searchText: onlyFavorites; let i = index">-->
+<!--        <app-product-card [productCard]="product"></app-product-card>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+
+    <div class="card-wrapper" *ngIf="(products$ | async)?.products as prt; else loader">
+      <div *ngFor="let product of prt | productsFilter: searchText: onlyFavorites; let i = index">
+        <app-product-card  [productCard]="product"></app-product-card>
       </div>
     </div>
 
@@ -62,8 +71,7 @@
 </ng-template>
 
 
-
-
+<app-modal></app-modal>
 
 
 
