@@ -5,7 +5,6 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>{{myTitle}}</span>
-    <app-exechange-rates></app-exechange-rates>
   </div>
 
   <div>
@@ -14,9 +13,11 @@
       <mat-icon matBadge="{{ 5 }}" matBadgeColor="warn" matBadgeOverlap="false" matBadgePosition="after">favorite</mat-icon>
     </button>
 
-    <button color="accent" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>money</mat-icon>
+    <button (click)="toggleLoginComponent()" color="warn" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>person_add</mat-icon>
+<!--      <mat-icon>how_to_reg</mat-icon>-->
     </button>
   </div>
+
 
 </mat-toolbar>

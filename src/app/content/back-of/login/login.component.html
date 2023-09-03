@@ -1,0 +1,52 @@
+<div class="authorization-wrapper">
+  <div class="input-wrapper">
+    <div class="input">
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error>
+          Please enter a valid email address
+        </mat-error>
+        <mat-error>
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error>
+          Please enter a valid email address
+        </mat-error>
+        <mat-error>
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    </div>
+
+    <div class="btn-group"  fxLayout="row" fxLayoutAlign="center center">
+      <!--        (click)="openSignupComponent()"-->
+      <button routerLink="/signup"
+        color="warn" mat-button>
+        <mat-icon>how_to_reg</mat-icon>
+      </button>
+
+      <button [routerLink]="['/backOf']"
+        color="accent" mat-button>
+        <mat-icon>done</mat-icon>
+      </button>
+    </div>
+  </div>
+
+
+
+</div>
