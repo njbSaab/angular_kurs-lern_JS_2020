@@ -26,7 +26,7 @@ export class ProductCardComponent {
     const dialogRef = this.dialog.open(DialogComponent);
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
+      console.log(`Dialog result: ${result} & ${this.productsService}`);
     });
   }
   //// dialog

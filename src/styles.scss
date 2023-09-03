@@ -23,7 +23,7 @@ img{
   margin: auto;
 }
 .img{
-  width: 300px;
+  width: 100%;
   height: 300px;
 }
 
@@ -41,4 +41,17 @@ mat-checkbox{
 .mdc-card__actions {
   align-items: baseline !important;
   justify-content: space-between;
+}
+.card_product_wrapper{
+  height: 100%;
+  width: 100%;
+}
+.card-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+mat-card-content{
+  padding: 20px 10px !important;
+  height: 60px;
 }
