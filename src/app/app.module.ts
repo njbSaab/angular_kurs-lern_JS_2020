@@ -20,6 +20,11 @@ import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { ModalModule } from './modal/modal.module';
+import { LoginComponent } from './content/back-of/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SignupComponent } from './content/back-of/signup/signup.component';
+import { BackOfComponent } from './content/back-of/back-of.component';
+import { ProductsComponent } from './content/back-of/content/products/products.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { ModalModule } from './modal/modal.module';
     ExechangeRatesComponent,
     ExchangeRatesDirective,
     HiddenDirective,
+    LoginComponent,
+    SignupComponent,
+    BackOfComponent,
+    ProductsComponent,
   ],
 
   imports: [
@@ -44,6 +53,7 @@ import { ModalModule } from './modal/modal.module';
     ProductCardModule,
     HttpClientModule,
     ModalModule.forRoot(),
+    AppRoutingModule,
   ],
   providers: [
     ProductsService,

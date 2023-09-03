@@ -1,74 +1,70 @@
 <app-header [drawer]="myDrawer"
             [myTitle]="title"
-
-
-
+            (loginPageActive)="isLoginActive($event)"
   ></app-header>
-<!--  (openDialogHeader)="openDialog()"-->
+
+<div *ngIf="isShowLoginComponent">
+  <router-outlet></router-outlet>
+</div>
 
 
-<app-side-menu (setSideNavControl)="setSideNav($event)">
-  <!--  ng-content-->
+<div *ngIf="!isShowLoginComponent">
+  <app-side-menu (setSideNavControl)="setSideNav($event)">
+    <!--  ng-content-->
 
-  <!-- leftSide-->
-  <ul class="menu">
-    <li>menu 1</li>
-    <li>menu 2</li>
-    <li>menu 3</li>
-  </ul>
+    <!-- leftSide-->
+    <ul class="menu">
+      <li>menu 1</li>
+      <li>menu 2</li>
+      <li>menu 3</li>
+    </ul>
 
-  <!-- rightSide-->
-  <div>
-    <h1 (click)="onClick()">main content</h1>
-  </div>
-  <!-- ng-content!-->
-
-  <!--  ng-template-->
-  <ng-template #contentTemplate>
-  <div class="card_product_wrapper flex-column flex-center">
-
-    <mat-checkbox color="accent" class="example-margin" (change)="toggleOnlyFavorites($event)">Show only favorites</mat-checkbox>
-
-    <mat-form-field color="accent" class="example-form-field">
-      <mat-label color="accent">Search your products</mat-label>
-      <input color="accent" matInput type="text" [(ngModel)]="InputValue"
-      #searchValue (input)="search(searchValue.value)">
-      <button *ngIf="!InputValue" matSuffix mat-icon-button>
-        <mat-icon>search</mat-icon>
-      </button>
-      <button *ngIf="InputValue" matSuffix mat-icon-button aria-label="Clear" (click)="InputValue=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-
-
-
-<!--    <div class="flex" *ngIf="products$ | async as products; else loader">-->
-<!--      <div *ngFor="let product of products | productsFilter: searchText: onlyFavorites; let i = index">-->
-<!--        <app-product-card [productCard]="product"></app-product-card>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-
-    <div class="card-wrapper" *ngIf="(products$ | async)?.products as prt; else loader">
-      <div *ngFor="let product of prt | productsFilter: searchText: onlyFavorites; let i = index">
-        <app-product-card  [productCard]="product"></app-product-card>
-      </div>
+    <!-- rightSide-->
+    <div>
+      <h1 (click)="onClick()">main content</h1>
     </div>
+    <!-- ng-content!-->
 
-  </div>
+    <!--  ng-template-->
+    <ng-template #contentTemplate>
+      <div class="card_product_wrapper flex-column flex-center">
+
+        <mat-checkbox color="accent" class="example-margin" (change)="toggleOnlyFavorites($event)">Show only favorites</mat-checkbox>
+
+        <mat-form-field color="accent" class="example-form-field">
+          <mat-label color="accent">Search your products</mat-label>
+          <input color="accent" matInput type="text" [(ngModel)]="InputValue"
+                 #searchValue (input)="search(searchValue.value)">
+          <button *ngIf="!InputValue" matSuffix mat-icon-button>
+            <mat-icon>search</mat-icon>
+          </button>
+          <button *ngIf="InputValue" matSuffix mat-icon-button aria-label="Clear" (click)="InputValue=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div class="card-wrapper" *ngIf="(products$ | async)?.products as prt; else loader">
+          <div *ngFor="let product of prt | productsFilter: searchText: onlyFavorites; let i = index">
+            <app-product-card  [productCard]="product"></app-product-card>
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
+    <!--  ng-template-->
+
+  </app-side-menu>
+
+  <ng-template #loader>
+    <div class="loading">
+      <mat-spinner></mat-spinner>
+      ...loading
+    </div>
   </ng-template>
-  <!--  ng-template-->
 
-</app-side-menu>
 
-<ng-template #loader>
-  <div class="loading">
-  <mat-spinner></mat-spinner>
-  ...loading
-  </div>
-</ng-template>
+</div>
+
 
 
 <app-modal></app-modal>

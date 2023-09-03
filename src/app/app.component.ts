@@ -16,8 +16,13 @@ export class AppComponent extends Unsubscribe implements OnInit {
   public title = 'LearnMe - Angular';
   public InputValue = '';
   public onlyFavorites = false;
+  public isShowLoginComponent = false;
+
   public setSideNav(drawer: MatDrawer): void {
     this.myDrawer = drawer;
+  }
+  public isLoginActive(showLoginComponent: boolean) {
+    this.isShowLoginComponent = showLoginComponent;
   }
   public products$!: Observable<MainProducts | null>;
   public searchText = '';
